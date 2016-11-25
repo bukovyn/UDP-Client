@@ -29,7 +29,7 @@ public class Client extends JFrame implements ActionListener{
 		txtarea.setBackground(Color.black);
 		txtarea.setForeground(Color.green);
 		this.add(txtarea,BorderLayout.CENTER);
-		button2= new JButton("Get message of the day");
+		button2 = new JButton("Get message of the day");
 		this.add(button2, BorderLayout.SOUTH);
 		button2.addActionListener(this);
 		this.setVisible(true);
