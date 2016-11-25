@@ -3,7 +3,7 @@ import java.net.DatagramPacket;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 
-public class ServerTest {
+public class ServerLaunch {
 
 	public static void main(String[] args) throws UnknownHostException, IOException {
 		
