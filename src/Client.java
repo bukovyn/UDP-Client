@@ -25,7 +25,7 @@ public class Client extends JFrame implements ActionListener{
 		this.setSize(300,300);
 		this.setTitle("Client");
 		this.setBackground(Color.black);
-		txtarea=new JTextArea();
+		txtarea = new JTextArea();
 		txtarea.setBackground(Color.black);
 		txtarea.setForeground(Color.green);
 		this.add(txtarea,BorderLayout.CENTER);
@@ -33,13 +33,13 @@ public class Client extends JFrame implements ActionListener{
 		this.add(button2, BorderLayout.SOUTH);
 		button2.addActionListener(this);
 		this.setVisible(true);
-		serverbffr=new byte[1037];
-		clientbffr=new byte[1037];
+		serverbffr = new byte[1037];
+		clientbffr = new byte[1037];
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		try{		
-			clientSocket=new DatagramSocket();	
-			server =new DatagramSocket(port);
+			clientSocket= new DatagramSocket();	
+			server = new DatagramSocket(port);
 			packetNo = 0;
 			while(true){
 				byte[] receiveData = new byte[1037];
@@ -48,9 +48,9 @@ public class Client extends JFrame implements ActionListener{
 				String msg=new String(receivePacket.getData());
 				packetNo++;
 				seqNum = (int) msg.charAt(msg.length() - 1);
-				String message= "Packet " + packetNo + " Received | SeqNum = " + seqNum ; 
-				clientbffr=message.getBytes();
-				DatagramPacket sendpack=new DatagramPacket(clientbffr,clientbffr.length,InetAddress.getLocalHost(), 6556);
+				String message = "Packet " + packetNo + " Received | SeqNum = " + seqNum ; 
+				clientbffr = message.getBytes();
+				DatagramPacket sendpack = new DatagramPacket(clientbffr,clientbffr.length,InetAddress.getLocalHost(), 6556);
 				clientSocket.send(sendpack);
 				txtarea.append("\nMyself: "+message);
 				txtarea.append("\nServer: " + msg);
@@ -64,10 +64,10 @@ public class Client extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e){
 		
 		try{
-			if(e.getActionCommand()=="Get message of the day"){
-				String message="Get message of the day";
-				clientbffr=message.getBytes();
-				DatagramPacket sendpack=new DatagramPacket(clientbffr,clientbffr.length,InetAddress.getLocalHost(),6556);
+			if(e.getActionCommand() == "Get message of the day"){
+				String message = "Get message of the day";
+				clientbffr = message.getBytes();
+				DatagramPacket sendpack = new DatagramPacket(clientbffr,clientbffr.length,InetAddress.getLocalHost(),6556);
 				clientSocket.send(sendpack);
 				txtarea.append("\nMyself: "+message);
 				txtfield.setText("");
@@ -79,7 +79,7 @@ public class Client extends JFrame implements ActionListener{
 	public DatagramPacket createPacket(String type) throws IOException, UnknownHostException{
 		
 	    IPAddress = InetAddress.getByName("localhost");
-		String request =type;
+		String request = type;
 		byte[] sendData = new byte[1037];
 		sendData = request.getBytes();
         DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress,9876);
