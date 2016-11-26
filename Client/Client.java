@@ -78,11 +78,11 @@ public class Client extends JFrame implements ActionListener{
 
 	public DatagramPacket createPacket(String type) throws IOException, UnknownHostException{
 		
-	    IPAddress = InetAddress.getByName("localhost");
+	    	IPAddress = InetAddress.getByName("localhost");
 		String request = type;
 		byte[] sendData = new byte[1037];
 		sendData = request.getBytes();
-        DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress,9876);
+        	DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress,9876);
 		return sendPacket;
 	}
 
